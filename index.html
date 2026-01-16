@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FirstSaleLab - Your First Sale in 7 Days</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-primary: #0a0a0a;
+      --bg-secondary: #141414;
+      --bg-card: #1a1a1a;
+      --text-primary: #ffffff;
+      --text-secondary: #a1a1a1;
+      --text-muted: #6b6b6b;
+      --accent: #22c55e;
+      --accent-dim: rgba(34, 197, 94, 0.15);
+      --border: #2a2a2a;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 60px 24px;
+    }
+    
+    /* Header */
+    .header {
+      text-align: center;
+      margin-bottom: 80px;
+      padding-bottom: 60px;
+      border-bottom: 1px solid var(--border);
+    }
+    
+    .badge {
+      display: inline-block;
+      background: var(--accent-dim);
+      color: var(--accent);
+      padding: 8px 16px;
+      border-radius: 100px;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      margin-bottom: 32px;
+      text-transform: uppercase;
+    }
+    
+    .logo {
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      margin-bottom: 24px;
+    }
+    
+    h1 {
+      font-size: clamp(40px, 8vw, 64px);
+      font-weight: 800;
+      line-height: 1.1;
+      margin-bottom: 24px;
+      letter-spacing: -2px;
+    }
+    
+    .subtitle {
+      font-size: 20px;
+      color: var(--text-secondary);
+      max-width: 600px;
+      margin: 0 auto 40px;
+      line-height: 1.7;
+    }
+    
+    .stats {
+      display: flex;
+      justify-content: center;
+      gap: 48px;
+      flex-wrap: wrap;
+    }
+    
+    .stat {
+      text-align: center;
+    }
+    
+    .stat-value {
+      font-size: 32px;
+      font-weight: 700;
+      color: var(--accent);
+    }
+    
+    .stat-label {
+      font-size: 13px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    
+    /* Intro */
+    .intro {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 40px;
+      margin-bottom: 60px;
+    }
+    
+    .intro h2 {
+      font-size: 24px;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+    
+    .intro p {
+      color: var(--text-secondary);
+      font-size: 17px;
+      margin-bottom: 16px;
+    }
+    
+    .intro p:last-child {
+      margin-bottom: 0;
+    }
+    
+    .highlight {
+      color: var(--accent);
+      font-weight: 600;
+    }
+    
+    /* Day Card */
+    .day-card {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 48px;
+      margin-bottom: 32px;
+      transition: border-color 0.3s ease;
+    }
+    
+    .day-card:hover {
+      border-color: var(--accent);
+    }
+    
+    .day-header {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      margin-bottom: 24px;
+    }
+    
+    .day-number {
+      background: var(--accent);
+      color: var(--bg-primary);
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 18px;
+      flex-shrink: 0;
+    }
+    
+    .day-title {
+      font-size: 24px;
+      font-weight: 700;
+      line-height: 1.3;
+    }
+    
+    .day-content p {
+      color: var(--text-secondary);
+      font-size: 16px;
+      margin-bottom: 20px;
+      line-height: 1.8;
+    }
+    
+    .day-content p:last-child {
+      margin-bottom: 0;
+    }
+    
+    .key-insight {
+      background: var(--accent-dim);
+      border-left: 3px solid var(--accent);
+      padding: 20px 24px;
+      border-radius: 0 12px 12px 0;
+      margin: 24px 0;
+    }
+    
+    .key-insight-label {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 8px;
+    }
+    
+    .key-insight p {
+      color: var(--text-primary) !important;
+      font-size: 15px !important;
+      margin-bottom: 0 !important;
+      font-weight: 500;
+    }
+    
+    .examples {
+      background: var(--bg-card);
+      border-radius: 12px;
+      padding: 24px;
+      margin: 24px 0;
+    }
+    
+    .examples-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+    }
+    
+    .examples ul {
+      list-style: none;
+    }
+    
+    .examples li {
+      color: var(--text-secondary);
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 15px;
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+    
+    .examples li:last-child {
+      border-bottom: none;
+    }
+    
+    .examples li::before {
+      content: "→";
+      color: var(--accent);
+      font-weight: 600;
+      flex-shrink: 0;
+    }
+    
+    .action-box {
+      background: var(--bg-primary);
+      border: 2px dashed var(--border);
+      border-radius: 12px;
+      padding: 24px;
+      margin-top: 24px;
+    }
+    
+    .action-box-label {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 12px;
+    }
+    
+    .action-box p {
+      color: var(--text-primary) !important;
+      font-weight: 500;
+      margin-bottom: 0 !important;
+    }
+    
+    /* Checklist */
+    .checklist {
+      margin: 24px 0;
+    }
+    
+    .checklist-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    
+    .checklist-item:last-child {
+      border-bottom: none;
+    }
+    
+    .check-icon {
+      width: 22px;
+      height: 22px;
+      background: var(--accent-dim);
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    
+    .check-icon svg {
+      width: 14px;
+      height: 14px;
+      color: var(--accent);
+    }
+    
+    .checklist-item span {
+      color: var(--text-secondary);
+      font-size: 15px;
+    }
+    
+    /* Closing */
+    .closing {
+      text-align: center;
+      padding: 80px 40px;
+      background: linear-gradient(180deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      margin-top: 60px;
+    }
+    
+    .closing h2 {
+      font-size: 36px;
+      font-weight: 800;
+      margin-bottom: 24px;
+      letter-spacing: -1px;
+    }
+    
+    .closing p {
+      color: var(--text-secondary);
+      font-size: 18px;
+      max-width: 500px;
+      margin: 0 auto 32px;
+      line-height: 1.7;
+    }
+    
+    .closing-quote {
+      font-size: 20px;
+      color: var(--accent);
+      font-weight: 600;
+      font-style: italic;
+    }
+    
+    /* Footer */
+    .footer {
+      text-align: center;
+      padding: 60px 24px;
+      color: var(--text-muted);
+      font-size: 14px;
+    }
+    
+    .footer a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+    
+    /* Print Styles */
+    @media print {
+      body {
+        background: white;
+        color: black;
+      }
+      
+      .container {
+        max-width: 100%;
+        padding: 40px;
+      }
+      
+      .day-card, .intro, .closing {
+        break-inside: avoid;
+        border: 1px solid #ddd;
+        background: #fafafa;
+      }
+      
+      .day-number {
+        background: black;
+        color: white;
+      }
+    }
+    
+    @media (max-width: 640px) {
+      .container {
+        padding: 40px 20px;
+      }
+      
+      .day-card {
+        padding: 32px 24px;
+      }
+      
+      .stats {
+        gap: 32px;
+      }
+      
+      .intro {
+        padding: 32px 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <!-- Header -->
+    <header class="header">
+      <div class="logo">FirstSaleLab</div>
+      <span class="badge">The 7-Day Execution Guide</span>
+      <h1>Your First Sale<br>in 7 Days</h1>
+      <p class="subtitle">
+        A focused execution guide designed for one purpose only: help you make your first online sale. 
+        No experience required. No audience needed. No ads necessary.
+      </p>
+      <div class="stats">
+        <div class="stat">
+          <div class="stat-value">7</div>
+          <div class="stat-label">Days</div>
+        </div>
+        <div class="stat">
+          <div class="stat-value">1</div>
+          <div class="stat-label">Goal</div>
+        </div>
+        <div class="stat">
+          <div class="stat-value">$0</div>
+          <div class="stat-label">Ad Spend</div>
+        </div>
+      </div>
+    </header>
+    
+    <!-- Intro -->
+    <section class="intro">
+      <h2>Before You Start</h2>
+      <p>
+        This guide strips away everything that doesn't directly lead to a sale. 
+        No business plans. No logo design. No "finding your passion." 
+        Just <span class="highlight">seven focused days of execution</span>.
+      </p>
+      <p>
+        Your first sale isn't about money. It's about <span class="highlight">proof</span>. 
+        Proof that someone will exchange their money for something you created. 
+        Once you have that proof, everything becomes easier.
+      </p>
+      <p>
+        Each day has one task. Complete it before moving on. 
+        Momentum matters more than perfection.
+      </p>
+    </section>
+    
+    <!-- Day 1 -->
+    <article class="day-card">
+      <div class="day-header">
+        <div class="day-number">01</div>
+        <h2 class="day-title">Choose Something People Already Buy</h2>
+      </div>
+      <div class="day-content">
+        <p>
+          Do not invent. Do not innovate. Your goal is to find a problem people are already 
+          paying to solve, then solve it in your own way. The market has already validated 
+          the demand—you just need to meet it.
+        </p>
+        
+        <div class="key-insight">
+          <div class="key-insight-label">Key Insight</div>
+          <p>If someone is selling a similar product and making money, that's not competition—that's validation.</p>
+        </div>
+        
+        <p>
+          Spend today researching what's already selling. Check Gumroad's trending products. 
+          Browse Etsy's bestsellers. Look at what courses are popular on Udemy. 
+          Notice what problems keep appearing.
+        </p>
+        
+        <div class="examples">
+          <div class="examples-title">Proven Product Categories</div>
+          <ul>
+            <li>Templates that save time (Notion, spreadsheets, documents)</li>
+            <li>Guides that shortcut learning (how-to guides, checklists, frameworks)</li>
+            <li>Tools that solve specific problems (calculators, trackers, planners)</li>
+            <li>Resources for specific professions (designers, developers, marketers)</li>
+          </ul>
+        </div>
+        
+        <div class="action-box">
+          <div class="action-box-label">Today's Deliverable</div>
+          <p>Write one sentence: "I help [specific person] achieve [specific outcome]."</p>
+        </div>
+      </div>
+    </article>
+    
+    <!-- Day 2 -->
+    <article class="day-card">
+      <div class="day-header">
+        <div class="day-number">02</div>
+        <h2 class="day-title">Create Your Product in 3 Hours or Less</h2>
+      </div>
+      <div class="day-content">
+        <p>
+          Your first product should be embarrassingly simple. Not because simple is bad, 
+          but because complexity is the enemy of shipping. The goal is a working version, 
+          not a perfect one.
+        </p>
+        
+        <div class="key-insight">
+          <div class="key-insight-label">Key Insight</div>
+          <p>A finished simple product beats an unfinished complex one. Every single time.</p>
+        </div>
+        
+        <p>
+          Set a timer for 3 hours. Create something that delivers real value but can be 
+          completed in that window. If you can't finish in 3 hours, you've scoped too big. 
+          Cut ruthlessly.
+        </p>
+        
+        <div class="examples">
+          <div class="examples-title">3-Hour Product Ideas</div>
+          <ul>
+            <li>A 10-page PDF guide solving one specific problem</li>
+            <li>A Notion template with clear instructions</li>
+            <li>A spreadsheet that automates a tedious calculation</li>
+            <li>A checklist that prevents common mistakes</li>
+            <li>A 30-minute video walkthrough of your expertise</li>
+          </ul>
+        </div>
+        
+        <div class="checklist">
+          <div class="checklist-item">
+            <div class="check-icon">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+            </div>
+            <span>Does it solve a real problem someone has right now?</span>
+          </div>
+          <div class="checklist-item">
+            <div class="check-icon">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+            </div>
+            <span>Can someone use it immediately after purchase?</span>
+          </div>
+          <div class="checklist-item">
+            <div class="check-icon">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+            </div>
+            <span>Would you pay for this if you had the problem it solves?</span>
+          </div>
+        </div>
+        
+        <div class="action-box">
+          <div class="action-box-label">Today's Deliverable</div>
+          <p>A complete (not perfect) first version of your product, saved and ready to deliver.</p>
+        </div>
+      </div>
+    </article>
+    
+    <!-- Day 3 -->
+    <article class="day-card">
+      <div class="day-header">
+        <div class="day-number">03</div>
+        <h2 class="day-title">Make It Possible to Pay You</h2>
+      </div>
+      <div class="day-content">
+        <p>
+          You don't need a website. You don't need a brand. You need one page with one button. 
+          That's it. Your sales page has exactly one job: make it clear what someone gets 
+          and let them pay.
+        </p>
+        
+        <div class="key-insight">
+          <div class="key-insight-label">Key Insight</div>
+          <p>You're not convincing anyone. You're allowing people who already want this to buy it.</p>
+        </div>
+        
+        <p>
+          Use Gumroad, Lemonsqueezy, or Stripe Payment Links. 
+          All three take less than 20 minutes to set up. 
+          Your page needs only these elements:
+        </p>
+        
+        <div class="checklist">
+          <div class="checklist-item">
+            <div class="check-icon">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+            </div>
+            <span><strong>Headline:</strong> What transformation do they get?</span>
+          </div>
+          <div class="checklist-item">
+            <div class="check-icon">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+            </div>
+            <span><strong>Subheadline:</strong> Who is this for and what's included?</span>
+          </div>
+          <div class="checklist-item">
+            <div class="check-icon">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+            </div>
+            <span><strong>3-5 Bullets:</strong> Specific benefits they'll receive</span>
+          </div>
+          <div class="checklist-item">
+            <div class="check-icon">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+            </div>
+            <span><strong>Price + Button:</strong> Make it obvious and clickable</span>
+          </div>
+        </div>
+        
+        <div class="action-box">
+          <div class="action-box-label">Today's Deliverable</div>
+          <p>A live page where someone can click a button and pay you money.</p>
+        </div>
+      </div>
+    </article>
+    
+    <!-- Day 4 -->
+    <article class="day-card">
+      <div class="day-header">
+        <div class="day-number">04</div>
+        <h2 class="day-title">Price for Momentum, Not Profit</h2>
+      </div>
+      <div class="day-content">
+        <p>
+          Your first sale is not about making money. It's about breaking through the 
+          psychological barrier of someone paying you for something you created. 
+          Price accordingly.
+        </p>
+        
+        <div class="key-insight">
+          <div class="key-insight-label">Key Insight</div>
+          <p>A $9 sale teaches you the same lessons as a $99 sale, but happens 10x faster.</p>
+        </div>
+        
+        <p>
+          Choose a price so low that saying "yes" requires almost no thought. 
+          The sweet spot for first products: $5-$19. This isn't about undervaluing yourself. 
+          It's about removing friction from your first transaction.
+        </p>
+        
+        <div class="examples">
+          <div class="examples-title">Pricing Psychology</div>
+          <ul>
+            <li><strong>$5-9:</strong> Impulse buy territory. Nearly zero friction.</li>
+            <li><strong>$10-19:</strong> Still low-risk, but feels more substantial.</li>
+            <li><strong>$20-49:</strong> Requires a bit more consideration.</li>
+            <li><strong>$50+:</strong> Save this for after you have proof and testimonials.</li>
+          </ul>
+        </div>
+        
+        <p>
+          After your first 10 sales, raise the price. Then raise it again after 25. 
+          Let the market tell you what it's worth. But first, get that initial momentum.
+        </p>
+        
+        <div class="action-box">
+          <div class="action-box-label">Today's Deliverable</div>
+          <p>Set your price between $5-$19. Update your payment page. Done.</p>
+        </div>
+      </div>
+    </article>
+    
+    <!-- Day 5 -->
+    <article class="day-card">
+      <div class="day-header">
+        <div class="day-number">05</div>
+        <h2 class="day-title">Put It in Front of Real People</h2>
+      </div>
+      <div class="day-content">
+        <p>
+          Today is uncomfortable. Today you share your work publicly. 
+          Not to convince anyone, not to pitch aggressively—just to be visible. 
+          You cannot make a sale if no one knows you're selling.
+        </p>
+        
+        <div class="key-insight">
+          <div class="key-insight-label">Key Insight</div>
+          <p>One genuine post to 100 people beats a perfect pitch to zero people.</p>
+        </div>
+        
+        <p>
+          Share once in each place where your potential customers already spend time. 
+          Don't over-explain. Don't apologize. State what you made, who it's for, 
+          and include the link.
+        </p>
+        
+        <div class="examples">
+          <div class="examples-title">Where to Share</div>
+          <ul>
+            <li><strong>Twitter/X:</strong> "I made [thing] for [people]. [Link]"</li>
+            <li><strong>LinkedIn:</strong> Share the problem you solve with a brief story</li>
+            <li><strong>Reddit:</strong> Find the relevant subreddit, follow their rules</li>
+            <li><strong>Communities:</strong> Slack groups, Discord servers, Facebook groups</li>
+            <li><strong>Direct:</strong> DM 10 people who might genuinely benefit</li>
+          </ul>
+        </div>
+        
+        <div class="checklist">
+          <div class="checklist-item">
+            <div class="check-icon">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+            </div>
+            <span>Post publicly in at least 2 places</span>
+          </div>
+          <div class="checklist-item">
+            <div class="check-icon">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+            </div>
+            <span>Send direct messages to 10 relevant people</span>
+          </div>
+          <div class="checklist-item">
+            <div class="check-icon">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+            </div>
+            <span>Tell 5 friends who might know someone interested</span>
+          </div>
+        </div>
+        
+        <div class="action-box">
+          <div class="action-box-label">Today's Deliverable</div>
+          <p>Your link shared publicly + 10 direct messages sent to potential buyers.</p>
+        </div>
+      </div>
+    </article>
+    
+    <!-- Day 6 -->
+    <article class="day-card">
+      <div class="day-header">
+        <div class="day-number">06</div>
+        <h2 class="day-title">Improve One Thing Based on Feedback</h2>
+      </div>
+      <div class="day-content">
+        <p>
+          By now you've gotten signals. Page visits. Questions. Maybe objections. 
+          Today you make exactly one improvement based on what you've learned. 
+          Not a redesign. Not a pivot. One adjustment.
+        </p>
+        
+        <div class="key-insight">
+          <div class="key-insight-label">Key Insight</div>
+          <p>Small iterations compound. One 10% improvement per week = 14x better in a year.</p>
+        </div>
+        
+        <p>
+          Look at the data you have: Did people click but not buy? 
+          Clarity problem. Did people not click? Headline problem. 
+          Did people ask questions? Missing information problem.
+        </p>
+        
+        <div class="examples">
+          <div class="examples-title">Common First Fixes</div>
+          <ul>
+            <li><strong>Weak headline:</strong> Make the benefit more specific and immediate</li>
+            <li><strong>Unclear value:</strong> Add a "What you get" section with specifics</li>
+            <li><strong>Trust gap:</strong> Add a simple guarantee or your credentials</li>
+            <li><strong>Price confusion:</strong> Make the price more prominent</li>
+            <li><strong>No urgency:</strong> Add a reason to buy today</li>
+          </ul>
+        </div>
+        
+        <div class="action-box">
+          <div class="action-box-label">Today's Deliverable</div>
+          <p>One specific change to your sales page based on real feedback or data.</p>
+        </div>
+      </div>
+    </article>
+    
+    <!-- Day 7 -->
+    <article class="day-card">
+      <div class="day-header">
+        <div class="day-number">07</div>
+        <h2 class="day-title">First Sale or First Data—Both Are Wins</h2>
+      </div>
+      <div class="day-content">
+        <p>
+          Today you assess. Either you made a sale—which proves demand exists—or you 
+          collected data that tells you exactly what to adjust. Both outcomes move you forward. 
+          Only inaction fails.
+        </p>
+        
+        <div class="key-insight">
+          <div class="key-insight-label">Key Insight</div>
+          <p>The person who made $7 this week knows more than the person who spent 6 months planning.</p>
+        </div>
+        
+        <p><strong>If you made a sale:</strong></p>
+        <div class="checklist">
+          <div class="checklist-item">
+            <div class="check-icon">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+            </div>
+            <span>Reach out to your buyer. Ask what convinced them to purchase.</span>
+          </div>
+          <div class="checklist-item">
+            <div class="check-icon">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+            </div>
+            <span>Ask for a testimonial. Use their words in your marketing.</span>
+          </div>
+          <div class="checklist-item">
+            <div class="check-icon">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+            </div>
+            <span>Plan how to get 10 more sales using what worked.</span>
+          </div>
+        </div>
+        
+        <p><strong>If you didn't make a sale:</strong></p>
+        <div class="checklist">
+          <div class="checklist-item">
+            <div class="check-icon">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+            </div>
+            <span>Review your traffic. Did enough people see it?</span>
+          </div>
+          <div class="checklist-item">
+            <div class="check-icon">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+            </div>
+            <span>Ask 3 people why they didn't buy. Listen without defending.</span>
+          </div>
+          <div class="checklist-item">
+            <div class="check-icon">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+            </div>
+            <span>Identify the biggest gap: audience, offer, or clarity?</span>
+          </div>
+        </div>
+        
+        <div class="action-box">
+          <div class="action-box-label">Today's Deliverable</div>
+          <p>Document what happened and your one clear next step based on the results.</p>
+        </div>
+      </div>
+    </article>
+    
+    <!-- Closing -->
+    <section class="closing">
+      <h2>You Now Have Proof</h2>
+      <p>
+        Your first sale isn't about the money. It's about crossing the invisible line 
+        from "thinking about selling" to "being someone who sells."
+      </p>
+      <p>
+        Most people never make that leap. They plan forever. They perfect endlessly. 
+        They wait for permission that never comes.
+      </p>
+      <p>
+        You took action. In 7 days, you chose a market, created a product, 
+        set up payment, priced strategically, found customers, and learned from reality.
+      </p>
+      <p class="closing-quote">
+        "Once you make one sale, everything becomes easier."
+      </p>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="footer">
+      <p>&copy; 2025 FirstSaleLab. All rights reserved.</p>
+      <p style="margin-top: 8px;">Built for action, not perfection.</p>
+    </footer>
+    
+  </div>
+</body>
+</html>
